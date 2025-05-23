@@ -1,0 +1,12 @@
+{% extends 'comicbooks/base.html' %}
+
+{% block content %}
+  <h2>Edit Comic Book</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+
+    <button type="button" onclick="location.href='{% url 'comic_details' comic.id %}'">Cancel</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'comicbooks/base.html' %}
+
+{% block content %}
+<h2>DC Characters</h2>
+<ul>
+    {% for character in characters %}
+        <li>
+            <a href="{{ character.link }}" target="_blank" rel="noopener noreferer">
+                {{ character.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

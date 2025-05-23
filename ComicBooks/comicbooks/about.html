@@ -1,0 +1,37 @@
+
+{% extends 'comicbooks/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <div class="container">
+        <h1>Welcome to my site. This site is a catalog of some of my rarer comics.
+        I hope you like what you see!<br><br>
+
+        My name is Norm and I started collecting comics in the late 1980s. In the early 1990s the comic book market started to flood w/ the "Foil Cover"
+        phase and actually got a little expensive and the stories and artwork were (in my opinion) falling off from the "Big 2"
+        known as Marvel & DC.<br><br>
+        Fastforward to 2002. The "Spider-Man" movie with Tobey Maguire came out and I wound up seeing it and it got me to go
+        to the first annual "Free Comic Book Day". This was the first Saturday in May, the day after "Spider-Man" premiered.
+        The comic book industry would continue to have this every May the day after a super-hero movie would be released.<br><br>
+        I picked up some books and got hooked all over again. The writing and aritstry had grown since I had stopped collecting.
+        Pairing that with the internet and sites like eBay and Amazon would allow me to get old back issues that I used to
+        have trouble tracking down.<br><br>If you click on the Inventory button you can see a small sample size of the
+        books I have in my collection. All of the books that you'll see are graded by CGC.<br><br>I'll be adding books
+        frequently so, please check back in. Thanks for checking out my site!<br><br>Click on the buttons below for more
+        info on some of my favorite heroes.
+        </h1>
+    </div>
+
+    <p class="hero-links">
+        <a class="details-button" href="{% url 'superhero_api' hero_id=70 %}">Batman</a>
+        <a class="details-button" href="{% url 'superhero_api' hero_id=644 %}">Superman</a>
+        <a class="details-button" href="{% url 'superhero_api' hero_id=720 %}">Wonder Woman</a>
+        <a class="details-button" href="{% url 'superhero_api' hero_id=620 %}">Spider-Man</a>
+        <a class="details-button" href="{% url 'superhero_api' hero_id=332 %}">Hulk</a>
+        <a class="details-button" href="{% url 'superhero_api' hero_id=717 %}">Wolverine</a>
+    </p>
+{% endblock %}
+
+

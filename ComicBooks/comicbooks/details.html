@@ -1,0 +1,33 @@
+{% extends 'comicbooks/base.html' %}
+
+{% block content %}
+  {% if comic %}
+    <div class="details-container">
+      {% if comic.cover_image %}
+        <a href="{%  url 'edit_comic' comic.id %}" class="details-image-link">
+          <img src="{{ comic.cover_image.url }}" alt="Cover" class="details-image">
+        </a>
+
+      {% else %}
+        <div class="details-image" style="background: #eee; display: flex; align-items: center; justify-content: center;">
+          <span>No Image</span>
+        </div>
+      {% endif %}
+
+      <div class="details-text">
+        <h2>{{ comic.title }} #{{ comic.issue_number }}</h2>
+        <p><strong>Grade:</strong> {{ comic.grade }}</p>
+        <p><strong>Writer:</strong> {{ comic.writer_name }}</p>
+        <p><strong>Artist:</strong> {{ comic.artist_name }}</p>
+        <p><strong>Publisher:</strong> {{ comic.publisher }}</p>
+        <p><strong>Notes:</strong> {{ comic.significance }}</p>
+        <div class="details-buttons">
+            <a href="{% url 'comic_list' %}" class="back-button">Back to List</a>
+            <a href="{% url 'edit_comic' comic.id %}" class="edit-button">Edit</a>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p style="text-align: center; margin-top: 2rem;">Comic not found.</p>
+  {% endif %}
+{% endblock %}

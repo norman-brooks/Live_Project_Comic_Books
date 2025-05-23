@@ -1,0 +1,50 @@
+{% extends 'comicbooks/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="comic-list-container">
+    <h2 class="comic-list-heading">Comic Book Inventory</h2>
+
+    {% if comics %}
+      <div class="comic-grid">
+        {% for comic in comics %}
+          <div class="comic-card">
+            <a href="{% url 'comic_details' comic.id %}">
+              {% if comic.cover_image %}
+                <img src="{{ comic.cover_image.url }}" alt="Cover" class="comic-image">
+              {% else %}
+                <div class="comic-placeholder">
+                  <span>No Image</span>
+                </div>
+              {% endif %}
+            </a>
+
+
+            <div class="comic-info">
+                <h3>{{ comic.title }} #{{ comic.issue_number }}</h3>
+            </div>
+
+            <div class="card-buttons">
+            <form action="{% url 'delete_comic' comic.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="delete-button"  onclick="return confirmDelete()">Delete</button>
+            </form>
+            <form action="{% url 'comic_details' comic.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="details-button">Details</button>
+            </form>
+          </div>
+        </div>
+       {% endfor %}
+
+    {% else %}
+      <p class="no-comics-message">No comics added yet.</p>
+    {% endif %}
+  </div>
+    <script>
+     function confirmDelete() {
+         return confirm('Are you sure you want to delete this item?')
+     }
+    </script>
+{% endblock %}
+

@@ -1,0 +1,32 @@
+<h1>Superhero API Data</h1>
+
+{% if data %}
+    <h2>{{ data.name }}</h2>
+
+    <p><strong>Full Name:</strong> {{ data.biography.full_name|default:"Unknown" }}</p>
+
+
+
+    <p><strong>Aliases:</strong>
+        {% if data.biography.aliases %}
+            {{ data.biography.aliases|join:", " }}
+        {% else %}
+            Unknown
+        {% endif %}
+    </p>
+
+
+
+    <p><strong>Publisher:</strong> {{ data.biography.publisher|default:"Unknown" }}</p>
+
+
+    <h3>Image</h3>
+    {% if data.image.url %}
+        <img src="{{ data.image.url }}" alt="{{ data.name }}" width="200">
+    {% else %}
+        <p>No image available.</p>
+    {% endif %}
+
+{% elif error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}

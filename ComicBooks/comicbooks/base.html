@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'comicbooks/style.css' %}">
+<head>
+  <meta charset="UTF-8">
+  <title>Comic Books!</title>
+
+</head>
+<body>
+  <!-- Navigation Bar -->
+
+  <nav>
+      <a class="active" href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="/comicbooks/add/">Add Comic Book</a>
+      <a href="{% url 'comic_list' %}">Inventory</a>
+      <a href="{% url 'marvel_scrape' %}">Marvel Characters</a>
+      <a href="{% url 'dc_scrape' %}">DC Characters</a>
+
+  </nav>
+
+<div class="main-content">
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</div>
+</body>
+</html>
